@@ -14,6 +14,9 @@ $servers = array(
 // chart settings
 define( 'CHART_TITLE', 'Server Load' );
 
+// changing this might trigger a bug in StatusBoard, but gives natural time direction
+define( 'CHART_NATURAL_TIME_DIRECTION', false );
+
 // data settings
 define( 'AUTO_CLEAN_UP', true );	// automatically delete old data?
 define( 'STORE_IN_MINUTES', 120 );	// when can we delete the old data?

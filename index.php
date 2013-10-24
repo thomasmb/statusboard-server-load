@@ -34,8 +34,11 @@ class SBServerLoad{
 		$graph->title = CHART_TITLE;
 		$graph->datasequences = array();
 		
-		$query = $this->db->prepare( "SELECT * FROM serverload WHERE timestamp > ( NOW() - INTERVAL ? MINUTE ) ORDER BY timestamp DESC" );
-		$query->execute( array( DISPLAY_IN_MINUTES ) );
+		$query = $this->db->prepare( "SELECT * FROM serverload WHERE timestamp > ( NOW() - INTERVAL ? MINUTE ) ORDER BY timestamp ?" );
+		$query->execute( array(
+			DISPLAY_IN_MINUTES, 
+			( true === CHART_NATURAL_TIME_DIRECTION ) ? 'ASC' : 'DESC'
+		));
 		
 		$servers_logs = array();
 		
